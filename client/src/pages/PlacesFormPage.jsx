@@ -15,6 +15,7 @@ export default function PlacesFormPage() {
   const [extraInfo, setExtraInfo] = useState("");
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
+  const [price, setPrice] = useState(100);
   const [maxGuests, setMaxGuests] = useState(1);
   const [redirect, setRedirect] = useState(false);
 
@@ -33,6 +34,7 @@ export default function PlacesFormPage() {
       setCheckIn(data.checkIn);
       setCheckOut(data.checkIn);
       setMaxGuests(data.maxGuests);
+      setPrice(data.price);
     });
   }, [id]);
 
@@ -65,6 +67,7 @@ export default function PlacesFormPage() {
       checkIn,
       checkOut,
       maxGuests,
+      price,
     };
     if (id) {
       // update
@@ -124,9 +127,9 @@ export default function PlacesFormPage() {
           add check in and ou time, remeber to have some time window for
           cleaning the room
         </p>
-        <div className="grid gap-2 sm:grid-cols-3">
+        <div className="grid gap-2 grid-cols-2 md:grid-cols-4">
           <div>
-            <h3 className="mt-2 -mb-2">Check in time</h3>
+            <h3 className="mt-2 -mb-1">Check in time</h3>
             <input
               value={checkIn}
               onChange={(ev) => setCheckIn(ev.target.value)}
@@ -135,7 +138,7 @@ export default function PlacesFormPage() {
             />
           </div>
           <div>
-            <h3 className="mt-2 -mb-2">Check out time</h3>
+            <h3 className="mt-2 -mb-1">Check out time</h3>
             <input
               value={checkOut}
               onChange={(ev) => setCheckOut(ev.target.value)}
@@ -144,10 +147,18 @@ export default function PlacesFormPage() {
             />
           </div>
           <div>
-            <h3 className="mt-2 -mb-2">Max number of guests</h3>
+            <h3 className="mt-2 -mb-1">Max number of guests</h3>
             <input
               value={maxGuests}
               onChange={(ev) => setMaxGuests(ev.target.value)}
+              type="number"
+            />
+          </div>
+          <div>
+            <h3 className="mt-2 -mb-1">Price per night</h3>
+            <input
+              value={price}
+              onChange={(ev) => setPrice(ev.target.value)}
               type="number"
             />
           </div>
